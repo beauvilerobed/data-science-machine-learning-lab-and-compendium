@@ -86,6 +86,7 @@
 - Random Forest Not Ideal For Extrapolating Data Points
 - Predicting stock prices with an MA, EMA, and LSTM models
 - Intro to Economic Modeling and Data Science
+- Customer LTV and Churn Survival Modeling
 - [Data Mining with Python](https://github.com/beauvilerobed/data-mining-with-python)
 
 ## Data Structures and Algorithms (DSA)
