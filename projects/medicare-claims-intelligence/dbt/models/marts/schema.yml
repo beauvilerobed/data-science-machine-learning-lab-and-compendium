@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: mart_members_in_force
+    description: Monthly exposure base (members covered and alive at month start).
+    columns:
+      - name: month_start
+        tests: [unique, not_null]
+      - name: members_in_force
+        tests: [not_null]
+
+  - name: mart_daily_claims
+    description: Daily claim counts and paid amounts by setting, with per-1,000 outpatient rate.
+    columns:
+      - name: claim_date
+        tests: [unique, not_null]
+
+  - name: mart_provider_features
+    description: Billing-behavior features per attending physician for FWA screening.
+    columns:
+      - name: attending_npi
+        tests: [unique, not_null]
+
+  - name: mart_member_year
+    description: Member-year demographics, chronic conditions, utilization, and cost.
+    tests:
+      - unique_combination:
+          arguments:
+            columns: [member_id, year]
+
+  - name: mart_risk_dataset
+    description: Year-t features with year t+1 high-cost label (prospective risk model).
+    tests:
+      - unique_combination:
+          arguments:
+            columns: [member_id, year]
+    columns:
+      - name: is_high_cost_next_year
+        tests: [not_null]

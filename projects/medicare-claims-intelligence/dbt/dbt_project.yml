@@ -1,0 +1,20 @@
+name: medicare_claims
+version: "1.0.0"
+profile: medicare_claims
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+vars:
+  # Paths are relative to the project root (run dbt from there; see README).
+  raw_dir: "{{ env_var('CLAIMS_RAW_DIR', 'data/raw') }}"
+  high_cost_quantile: 0.95
+  min_provider_claims: 30
+
+models:
+  medicare_claims:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

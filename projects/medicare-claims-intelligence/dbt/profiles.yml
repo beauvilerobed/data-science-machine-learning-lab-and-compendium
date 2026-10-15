@@ -1,0 +1,9 @@
+medicare_claims:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('CLAIMS_WAREHOUSE', 'data/warehouse.duckdb') }}"
+      threads: 4
+      settings:
+        memory_limit: "3GB"

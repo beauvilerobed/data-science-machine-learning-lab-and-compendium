@@ -1,0 +1,15 @@
+duckdb>=1.1
+dbt-duckdb>=1.9
+pandas>=2.2
+numpy>=1.26
+scipy>=1.13
+scikit-learn>=1.5
+statsmodels>=0.14
+prophet>=1.1
+xgboost>=2.1
+shap>=0.46
+mlflow-skinny>=3.0
+alembic>=1.13
+pypdf>=4.0
+matplotlib>=3.9
+jupyter

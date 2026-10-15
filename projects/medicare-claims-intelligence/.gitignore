@@ -1,0 +1,17 @@
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+.DS_Store
+.env
+
+# data: download with scripts/download_data.py
+data/raw/
+data/warehouse.duckdb*
+
+# generated
+dbt/target/
+dbt/logs/
+logs/
+mlflow.db
+**/mlruns/
+dbt/.user.yml

@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: stg_beneficiary
+    description: One row per member per year from the DE-SynPUF beneficiary summary files.
+    columns:
+      - name: member_id
+        tests: [not_null]
+      - name: year
+        tests:
+          - accepted_values:
+              arguments:
+                values: [2008, 2009, 2010]
+      - name: sex_code
+        tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2]
+      - name: medicare_paid_total
+        tests: [not_null]
+
+  - name: stg_outpatient_claims
+    description: Outpatient claim segments.
+    columns:
+      - name: claim_key
+        tests: [unique, not_null]
+      - name: member_id
+        tests: [not_null]
+      - name: claim_from_date
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  - name: stg_inpatient_claims
+    description: Inpatient claim segments.
+    columns:
+      - name: claim_key
+        tests: [unique, not_null]
+      - name: member_id
+        tests: [not_null]
+
+  - name: stg_rx_events
+    description: Part D prescription drug events.
+    columns:
+      - name: pde_id
+        tests: [unique, not_null]
